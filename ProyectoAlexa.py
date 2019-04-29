@@ -7,7 +7,7 @@ ask = Ask(app, '/')
 
 @ask.launch
 def start():
-    return question('Quel est votre nom ?')
+    return question('''Je suis Alexa et je suis ici pour t'aider Quel est votre nom ?''')
 
 
 @ask.intent('HelloIntent')
@@ -17,8 +17,8 @@ def bonjour(nom):
     return question("Bonjour {} tu veux creer ton planing pour aujourd'hui ? ".format(nom))
 
 @ask.intent('AcesoIntent')
-def acceso(affirmacion):
-    if afirmacion == oui or afirmacion == Oui:
+def acceso(reponse):
+    if reponse == oui or reponse == Oui:
         return question ('''Qu'est-ce que tu vas faire aujourd'hui ?''')
 
 @ask.intent('TareasIntent')
