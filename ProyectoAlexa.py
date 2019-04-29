@@ -26,7 +26,8 @@ def planing (tareas):
     task = []
     if tareas is None:
         task.append(tareas)
-    return statement('''Les tâches pour aujourd'hui sont les suivantes ''')
+    return statement('''Les tâches pour aujourd'hui sont les suivantes {} '''.format(tareas))
+
 
 
 
