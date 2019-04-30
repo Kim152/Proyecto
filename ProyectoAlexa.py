@@ -7,25 +7,39 @@ ask = Ask(app, '/')
 
 @ask.launch
 def start():
-    return question('''Je suis Alexa et je suis ici pour t'aider Quel est votre nom ?''')
-
-
-@ask.intent('HelloIntent')
-def bonjour(nom):
-    if nom is None:
-        return statement("Je ne connais cette nom ,desole")
-    else:
-        return question("Bonjour {} tu veux creer ton planing pour aujourd'hui".format(nom))
+    return question('''Je suis Alexa et je suis ici pour t'aider a contruir ton planning , mais laisse moi savoir Quel est ton nom ?''')
 
 @ask.intent('AcesoIntent')
 def aceso(reponse):
     if reponse == 'oui' or reponse == 'Oui':
         return question ('''Ok, alors dis-moi le premier événement de la journée. ?''')
-    return question ('Ok, alors dis-moi le premier événement de la journée. ?')
+    return question ('Ok, alors dis-moi un tache  ?')
 
 @ask.intent('TareasIntent')
 def planing (tareas):
     task = []
     if tareas is None:
         task.append(tareas)
-    return statement('Les tâches pour cette jour sont les suivantes :{} '.format(tareas))
+    else:
+        task.append(tareas)
+        return question('a quel heure ?')
+    return question ('Tu as adjunte {} , cette tache tu vas le faire a quel heure ?' .format (tareas))
+
+@ask.intent('HeureIntent')
+def duree(temps):
+    if temps is None:
+        return question('''c'est tout pour cette tache ?''')
+    else:
+        task.append(temps)
+    return question('''c'est tout pour cette tache ?''')
+
+@ask.intent('TacheIntent')
+def fin(acti):
+    if acti is None:
+        return statement ('Ton activite est {} a {}'.format (tareas, temps))
+    return statement ('Ton activite est {} a {}'.format (tareas, temps))
+
+
+
+if __name__ == '__main__':
+    app.run()
