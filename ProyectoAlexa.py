@@ -13,23 +13,19 @@ def start():
 @ask.intent('HelloIntent')
 def bonjour(nom):
     if nom is None:
-        return statement('Je ne connais pas ce nom, desole')
-    return question("Bonjour {} tu veux creer ton planing pour aujourd'hui ? ".format(nom))
+        return statement("Je ne connais cette nom ,desole")
+    else:
+        return question("Bonjour {} tu veux creer ton planing pour aujourd'hui".format(nom))
 
 @ask.intent('AcesoIntent')
-def acceso(reponse):
-    if reponse == oui or reponse == Oui:
-        return question ('''Qu'est-ce que tu vas faire aujourd'hui ?''')
+def aceso(reponse):
+    if reponse == 'oui' or reponse == 'Oui':
+        return question ('''Ok, alors dis-moi le premier événement de la journée. ?''')
+    return question ('Ok, alors dis-moi le premier événement de la journée. ?')
 
 @ask.intent('TareasIntent')
 def planing (tareas):
     task = []
     if tareas is None:
         task.append(tareas)
-    return statement('''Les tâches pour aujourd'hui sont les suivantes {} '''.format(tareas))
-
-
-
-
-if __name__ == '__main__':
-    app.run()
+    return statement('Les tâches pour cette jour sont les suivantes :{} '.format(tareas))
